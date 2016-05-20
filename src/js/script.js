@@ -290,11 +290,24 @@ jQuery(function($) {
 	    }
 	});
 
-	$('body').on('click', '#post-index .post .js-ajax-link', function() {
+	$('body').on('click',  '#post-index .post .js-ajax-link', function() {
 		var post = $(this).parents('.post');
 		post.addClass('initial');
 		setTimeout(function() {
 			post.addClass('active');
 		}, 1);
+	});
+	$('body').on('click', 'a[href*="#"]:not([href="#"])', function(e) {
+		e.preventDefault();
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
 	});
 });

@@ -3,23 +3,30 @@
 {{#post}}
 
 <main class="content" role="main">
+
 	<article class="{{post_class}}">
+		{{#if image}}
+
+		<div class="post-hero-image" style="background-image: url({{image}})">
+		<div class="push-link"><a href="#push" title="Read '{{{title}}}'">V</a></div>
+		</div>
+		{{/if}}
 		<div class="inner">
 
-			<div id="push">
-
+			<div id="push" name="push">
 			<header class="post-header">
 				<span class="post-meta">
 					<span class="post-author">{{author}}</span> | <span class="post-date">{{date format="DD MMM YYYY"}} <span class="post-reading-time">| <span class="estimated-reading-time"></span> (<span class="word-count"></span> words)</span></span>
 				</span>
 				<div class="clear"></div>
 				<h1 class="post-title">{{{title}}}</h1>
+
 			</header>
-		
+
 			<section class="post-content">
 				{{content}}
 			</section>
-			
+
 			<footer class="post-footer">
 				<div class="post-tags">
 					{{tags separator=" "}}
@@ -36,13 +43,13 @@
 					</a>
 				</div>
 			</footer>
-			
+
 			<aside class="post-comments">
 				<div id="disqus_thread"></div>
 			</aside>
-			
+
 			</div>
-			
+
 			<nav class="post-nav">
 				{{#next_post}}
 					<a class="post-nav-item post-nav-next" href="{{url absolute="true"}}">
